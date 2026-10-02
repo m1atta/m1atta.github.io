@@ -28,7 +28,7 @@ export default function Nav() {
     >
       <nav className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
         <a href="#top" className="font-mono text-sm font-semibold tracking-wide text-ink-100">
-          RA<span className="text-copper-400">.</span>
+          <span className="glow-text text-accent-400">R</span>A.
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">

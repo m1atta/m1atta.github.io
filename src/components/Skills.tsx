@@ -4,7 +4,7 @@ import SectionHeading from './SectionHeading'
 export default function Skills() {
   return (
     <section id="skills" className="section">
-      <SectionHeading index="04" title="Skills" />
+      <SectionHeading index="05" title="Skills" />
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {skills.map((group) => (

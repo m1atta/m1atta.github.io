@@ -1,23 +1,23 @@
 import { useState } from 'react'
-import { projects } from '../data/projects'
+import { otherProjects } from '../data/projects'
 import SectionHeading from './SectionHeading'
 import ProjectCard from './ProjectCard'
 import ProjectModal from './ProjectModal'
 
 export default function Projects() {
   const [openId, setOpenId] = useState<string | null>(null)
-  const openProject = projects.find((p) => p.id === openId) ?? null
+  const openProject = otherProjects.find((p) => p.id === openId) ?? null
 
   return (
-    <section id="projects" className="section">
+    <section id="more-projects" className="section">
       <SectionHeading
-        index="02"
-        title="Projects"
-        description="A mix of digital design, analog electronics, PCB layout, and software — the ones that best show how I actually work."
+        index="03"
+        title="More Projects"
+        description="More of what I've built — digital design, analog electronics, and software, without the dedicated spotlight above."
       />
 
       <div className="grid gap-5 sm:grid-cols-2">
-        {projects.map((project) => (
+        {otherProjects.map((project) => (
           <ProjectCard key={project.id} project={project} onOpen={setOpenId} />
         ))}
       </div>

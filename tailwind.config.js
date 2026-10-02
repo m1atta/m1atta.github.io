@@ -5,8 +5,8 @@ export default {
     extend: {
       colors: {
         // Dark "instrument panel" base with a cool navy cast, to sit under the
-        // animated blue grid backdrop. Accent is a copper/solder tone (PCB
-        // trace + solder joint), used sparingly as the single signature color.
+        // animated blue grid backdrop. Accent is the same electric blue as the
+        // grid/cursor glow, used as the single signature color site-wide.
         ink: {
           950: '#060910',
           900: '#0d1420',
@@ -19,11 +19,11 @@ export default {
           200: '#c3c9d6',
           100: '#e6e9ef',
         },
-        copper: {
-          600: '#a85f2e',
-          500: '#c87a3e',
-          400: '#dd9657',
-          300: '#eab378',
+        accent: {
+          600: '#2563eb',
+          500: '#3b82f6',
+          400: '#60a5fa',
+          300: '#93c5fd',
         },
         signal: {
           500: '#5fb88a', // muted scope-trace green, used only for small "status" accents

@@ -33,7 +33,7 @@ export default function Hero() {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub profile"
-            className="text-ink-400 transition-colors hover:text-copper-400"
+            className="text-ink-400 transition-colors hover:text-accent-400"
           >
             <GithubIcon className="h-5 w-5" />
           </a>
@@ -42,7 +42,7 @@ export default function Hero() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn profile"
-            className="text-ink-400 transition-colors hover:text-copper-400"
+            className="text-ink-400 transition-colors hover:text-accent-400"
           >
             <LinkedInIcon className="h-5 w-5" />
           </a>

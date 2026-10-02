@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Project } from '../data/projects'
 import { CloseIcon, GithubIcon, ExternalLinkIcon } from './icons'
 
@@ -9,10 +9,12 @@ interface Props {
 
 export default function ProjectModal({ project, onClose }: Props) {
   const closeBtnRef = useRef<HTMLButtonElement>(null)
+  const [activeImage, setActiveImage] = useState(0)
 
   useEffect(() => {
     if (!project) return
     closeBtnRef.current?.focus()
+    setActiveImage(0)
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -26,6 +28,11 @@ export default function ProjectModal({ project, onClose }: Props) {
   }, [project, onClose])
 
   if (!project) return null
+
+  // Gallery projects (CanSat, say) list every shot in `images`; everything
+  // else falls back to the single `image`/`video`. Video always wins the
+  // main viewer slot when present.
+  const gallery = project.images && project.images.length > 0 ? project.images : project.image ? [project.image] : []
 
   return (
     <div
@@ -56,17 +63,39 @@ export default function ProjectModal({ project, onClose }: Props) {
           </button>
         </div>
 
-        {(project.video || project.image) && (
-          <div className="mt-6 overflow-hidden rounded-md bg-ink-800">
-            {project.video ? (
-              <video
-                src={project.video}
-                poster={project.image}
-                controls
-                className="aspect-video w-full"
-              />
-            ) : (
-              <img src={project.image} alt={project.title} className="aspect-video w-full object-cover" />
+        {(project.video || gallery.length > 0) && (
+          <div className="mt-6">
+            <div className="overflow-hidden rounded-md bg-ink-800">
+              {project.video ? (
+                <video src={project.video} poster={project.image} controls className="aspect-video w-full" />
+              ) : (
+                <img
+                  src={gallery[activeImage]}
+                  alt={project.title}
+                  className="aspect-video w-full object-cover"
+                />
+              )}
+            </div>
+
+            {/* Thumbnail strip — only shown for projects with more than one
+                photo (e.g. CanSat's PCB layout / 3D view / schematic). Click
+                to swap the main viewer above. Hidden when a video is playing
+                since the video already occupies the main viewer slot. */}
+            {!project.video && gallery.length > 1 && (
+              <div className="mt-2 flex gap-2">
+                {gallery.map((src, i) => (
+                  <button
+                    key={src}
+                    onClick={() => setActiveImage(i)}
+                    aria-label={`Show photo ${i + 1}`}
+                    className={`h-14 w-20 flex-shrink-0 overflow-hidden rounded border transition-colors ${
+                      i === activeImage ? 'border-accent-400' : 'border-ink-700 hover:border-ink-500'
+                    }`}
+                  >
+                    <img src={src} alt="" className="h-full w-full object-cover" />
+                  </button>
+                ))}
+              </div>
             )}
           </div>
         )}

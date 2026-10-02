@@ -4,13 +4,13 @@ import SectionHeading from './SectionHeading'
 export default function Experience() {
   return (
     <section id="experience" className="section">
-      <SectionHeading index="03" title="Experience" />
+      <SectionHeading index="04" title="Experience" />
 
       <ol className="relative space-y-8 border-l border-ink-700 pl-8">
         {experience.map((item) => (
           <li key={item.id} className="relative">
             <span
-              className="absolute -left-[2.3rem] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-ink-950 bg-copper-500"
+              className="absolute -left-[2.3rem] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-ink-950 bg-accent-500"
               aria-hidden="true"
             />
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">

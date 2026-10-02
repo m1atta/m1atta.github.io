@@ -36,10 +36,10 @@ export default function ProjectCard({ project, onOpen }: Props) {
         ))}
       </div>
 
-      <div className="mt-5 flex items-center gap-4 border-t border-ink-800 pt-4 text-sm">
+      <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-ink-800 pt-4 text-sm">
         <button
           onClick={() => onOpen(project.id)}
-          className="font-medium text-copper-400 transition-colors hover:text-copper-300"
+          className="glow-text whitespace-nowrap font-medium text-accent-400 transition-colors hover:text-accent-300"
         >
           View details
         </button>
@@ -49,15 +49,15 @@ export default function ProjectCard({ project, onOpen }: Props) {
             href={project.github}
             target="_blank"
             rel="noreferrer"
-            className="ml-auto inline-flex items-center gap-1.5 text-ink-400 transition-colors hover:text-ink-100"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap text-ink-400 transition-colors hover:text-ink-100 sm:ml-auto"
           >
             <GithubIcon className="h-4 w-4" />
             Code
           </a>
         ) : (
-          <span className="ml-auto inline-flex items-center gap-1.5 text-ink-600">
+          <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-ink-600 sm:ml-auto">
             <GithubIcon className="h-4 w-4" />
-            Code coming soon
+            No repo yet
           </span>
         )}
 
@@ -66,7 +66,7 @@ export default function ProjectCard({ project, onOpen }: Props) {
             href={project.demo}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-ink-400 transition-colors hover:text-ink-100"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap text-ink-400 transition-colors hover:text-ink-100"
           >
             <ExternalLinkIcon className="h-4 w-4" />
             Demo

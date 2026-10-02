@@ -39,9 +39,10 @@ export interface Project {
   category: ProjectCategory
   github: string // '' if not uploaded yet
   demo?: string // optional live/demo link (external site, or a hosted video link)
-  image?: string // optional path under /public/projects/, e.g. '/projects/alu.png'
+  image?: string // optional path under /public/projects/, e.g. '/projects/alu.png' — doubles as the featured card's main thumbnail
+  images?: string[] // optional extra photos shown as a small gallery in the detail view (featured projects only)
   video?: string // optional path under /public/projects/ to a local video file, e.g. '/projects/alu-demo.mp4'
-  featured: boolean // featured projects get the larger card treatment
+  featured: boolean // featured projects get the larger card treatment, a thumbnail, and top billing — keep this to your 3 strongest, most-documented projects
 }
 
 export const projects: Project[] = [
@@ -61,7 +62,7 @@ export const projects: Project[] = [
     date: 'Dec 2025',
     category: 'digital-systems',
     github: '',
-    featured: true,
+    featured: false,
   },
   {
     id: 'cansat-pcb',
@@ -79,6 +80,8 @@ export const projects: Project[] = [
     date: 'Aug 2026',
     category: 'hardware',
     github: '',
+    image: '/projects/cansat-3d-view.png',
+    images: ['/projects/cansat-3d-view.png', '/projects/cansat-pcb-layout.png', '/projects/cansat-schematic.png'],
     featured: true,
   },
   {
@@ -101,7 +104,7 @@ export const projects: Project[] = [
     date: 'Apr 2026',
     category: 'hardware',
     github: '',
-    featured: true,
+    featured: false,
   },
   {
     id: 'great-lakes-analysis',
@@ -118,7 +121,7 @@ export const projects: Project[] = [
     date: '2025',
     category: 'software',
     github: '',
-    featured: true,
+    featured: false,
   },
   {
     id: 'ai-chatbot-prototype',
@@ -150,7 +153,9 @@ export const projects: Project[] = [
     date: 'Sept 2026 — Present',
     category: 'robotics',
     github: 'https://github.com/m1atta/roboracer-emergency-braking',
-    featured: false,
+    image: '/projects/roboracer-sim.png',
+    video: '/projects/roboracer-demo.mp4',
+    featured: true,
   },
   {
     id: 'tmapu',
@@ -169,7 +174,8 @@ export const projects: Project[] = [
     category: 'software',
     github: '',
     demo: 'https://tmapu-beta.vercel.app/',
-    featured: false,
+    image: '/projects/tmapu-screenshot.jpg',
+    featured: true,
   },
   {
     id: 'gridsync',

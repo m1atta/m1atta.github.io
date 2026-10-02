@@ -4,7 +4,7 @@ import SectionHeading from './SectionHeading'
 export default function About() {
   return (
     <section id="about" className="section">
-      <SectionHeading index="01" title="About" />
+      <SectionHeading index="02" title="About" />
       <div className="grid gap-10 md:grid-cols-[1fr_auto]">
         <div className="max-w-2xl space-y-5 text-[15px] leading-relaxed text-ink-200">
           {site.bio.map((p, i) => (
