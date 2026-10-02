@@ -56,6 +56,21 @@ export default function ProjectModal({ project, onClose }: Props) {
           </button>
         </div>
 
+        {(project.video || project.image) && (
+          <div className="mt-6 overflow-hidden rounded-md bg-ink-800">
+            {project.video ? (
+              <video
+                src={project.video}
+                poster={project.image}
+                controls
+                className="aspect-video w-full"
+              />
+            ) : (
+              <img src={project.image} alt={project.title} className="aspect-video w-full object-cover" />
+            )}
+          </div>
+        )}
+
         <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-ink-200">
           {project.description.map((p, i) => (
             <p key={i}>{p}</p>

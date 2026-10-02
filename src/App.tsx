@@ -6,20 +6,25 @@ import Experience from './components/Experience'
 import Skills from './components/Skills'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import GridBackground from './components/GridBackground'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-ink-950">
-      <Nav />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Experience />
-        <Skills />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <>
+      {/* Fixed, full-page animated grid — sits behind everything below */}
+      <GridBackground />
+      <div className="relative min-h-screen">
+        <Nav />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Experience />
+          <Skills />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </>
   )
 }

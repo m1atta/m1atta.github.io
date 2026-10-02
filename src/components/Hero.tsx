@@ -4,12 +4,6 @@ import { GithubIcon, LinkedInIcon, FileIcon, MailIcon } from './icons'
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden border-b border-ink-800">
-      {/* Subtle schematic-grid backdrop — faint, not a literal circuit image */}
-      <div
-        className="pointer-events-none absolute inset-0 bg-grid-pattern bg-grid opacity-60 [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_70%)]"
-        aria-hidden="true"
-      />
-
       <div className="section relative flex min-h-[72vh] flex-col justify-center">
         <p className="label-mono mb-4">EE Co-op Student · TMU</p>
 

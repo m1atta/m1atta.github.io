@@ -9,6 +9,17 @@ interface Props {
 export default function ProjectCard({ project, onOpen }: Props) {
   return (
     <article className="card group flex h-full flex-col p-5">
+      {project.image && (
+        <div className="-mx-5 -mt-5 mb-5 aspect-video overflow-hidden bg-ink-800">
+          <img
+            src={project.image}
+            alt={project.title}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+      )}
+
       <div className="flex items-start justify-between gap-3">
         <span className="label-mono">{project.date}</span>
         <span className="pill capitalize">{project.category.replace('-', ' ')}</span>

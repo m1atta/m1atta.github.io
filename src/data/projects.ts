@@ -10,6 +10,19 @@
 // 'https://github.com/m1atta/alu-vhdl'
 // Leave it as '' rather than guessing — an empty string renders a
 // "Code coming soon" label instead of a broken link.
+//
+// `image` and `video` are both optional — a project with neither just
+// renders as text, exactly as before. To add one:
+//   1. Drop the file in public/projects/ (e.g. public/projects/alu-board.png
+//      or public/projects/alu-demo.mp4).
+//   2. Set image: '/projects/alu-board.png' and/or video: '/projects/alu-demo.mp4'
+//      on that project below (the leading slash matters — it's a path from
+//      the site root, not from this file).
+// `image` shows as a thumbnail on the card and a larger cover image in the
+// detail view. `video` expects a local video file and renders as an inline
+// player in the detail view (with `image`, if also set, as its poster
+// frame) — it is NOT for pasting a YouTube/Vimeo link; for an externally
+// hosted demo video, use the `demo` field instead so it shows as a link.
 // ---------------------------------------------------------------------------
 
 export type ProjectCategory = 'hardware' | 'digital-systems' | 'software' | 'robotics' | 'ai'
@@ -25,8 +38,9 @@ export interface Project {
   date: string // display string, e.g. "Dec 2025"
   category: ProjectCategory
   github: string // '' if not uploaded yet
-  demo?: string // optional live/demo link
+  demo?: string // optional live/demo link (external site, or a hosted video link)
   image?: string // optional path under /public/projects/, e.g. '/projects/alu.png'
+  video?: string // optional path under /public/projects/ to a local video file, e.g. '/projects/alu-demo.mp4'
   featured: boolean // featured projects get the larger card treatment
 }
 

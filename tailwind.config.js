@@ -4,20 +4,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Dark "instrument panel" base, warm neutral so it doesn't read as pure
-        // software-dev-blue-black. Accent is a copper/solder tone (PCB trace +
-        // solder joint), used sparingly as the single signature color.
+        // Dark "instrument panel" base with a cool navy cast, to sit under the
+        // animated blue grid backdrop. Accent is a copper/solder tone (PCB
+        // trace + solder joint), used sparingly as the single signature color.
         ink: {
-          950: '#0b0c0d',
-          900: '#121416',
-          800: '#1a1d20',
-          700: '#24282c',
-          600: '#33383d',
-          500: '#4a5157',
-          400: '#6b7278',
-          300: '#95999d',
-          200: '#c2c5c7',
-          100: '#e4e5e6',
+          950: '#060910',
+          900: '#0d1420',
+          800: '#151d2c',
+          700: '#202a3a',
+          600: '#313d50',
+          500: '#4a5668',
+          400: '#6c7890',
+          300: '#97a1b5',
+          200: '#c3c9d6',
+          100: '#e6e9ef',
         },
         copper: {
           600: '#a85f2e',
