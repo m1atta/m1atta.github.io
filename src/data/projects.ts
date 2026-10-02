@@ -79,7 +79,7 @@ export const projects: Project[] = [
     tools: ['KiCad'],
     date: 'Aug 2026',
     category: 'hardware',
-    github: '',
+    github: 'https://github.com/m1atta/CanSat_IMU_Magnetometer',
     image: '/projects/cansat-3d-view.png',
     images: ['/projects/cansat-3d-view.png', '/projects/cansat-pcb-layout.png', '/projects/cansat-schematic.png'],
     featured: true,
