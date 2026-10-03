@@ -1,5 +1,6 @@
 import type { Project } from '../data/projects'
 import { GithubIcon, ExternalLinkIcon } from './icons'
+import ProjectBadges from './ProjectBadges'
 
 interface Props {
   project: Project
@@ -27,6 +28,12 @@ export default function ProjectCard({ project, onOpen }: Props) {
 
       <h3 className="mt-3 text-lg font-semibold text-ink-100">{project.title}</h3>
       <p className="mt-2 text-sm text-ink-300">{project.tagline}</p>
+
+      {project.badges && (
+        <div className="mt-3">
+          <ProjectBadges badges={project.badges} />
+        </div>
+      )}
 
       <div className="mt-4 flex flex-wrap gap-1.5">
         {project.tools.map((t) => (

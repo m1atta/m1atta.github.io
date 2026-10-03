@@ -2,17 +2,19 @@ import { useState } from 'react'
 import { featuredProjects } from '../data/projects'
 import SectionHeading from './SectionHeading'
 import ProjectModal from './ProjectModal'
+import ProjectBadges from './ProjectBadges'
 import { GithubIcon, ExternalLinkIcon } from './icons'
 
 // ---------------------------------------------------------------------------
 // FEATURED PROJECTS — the spotlight row, right under the hero. Bigger cards
 // with a real thumbnail/video, a numbered badge, and more breathing room
-// than the plain Projects grid below, so these three visually read as "the
-// best work" rather than just more items in a list.
+// than the plain Projects grid below, so these visually read as "the best
+// work" rather than just more items in a list.
 //
 // Which projects show up here is controlled entirely by `featured: true` in
 // src/data/projects.ts — set that flag (and give the project an `image`)
-// to feature a different project later.
+// to feature a different project later. Laid out 2-per-row (1 2 / 3 4 / ...)
+// so it scales cleanly whether there are 3, 4, or more featured projects.
 // ---------------------------------------------------------------------------
 
 export default function FeaturedProjects() {
@@ -24,10 +26,10 @@ export default function FeaturedProjects() {
       <SectionHeading
         index="01"
         title="Featured Work"
-        description="Three projects that best show the range — hardware and software, design and debugging."
+        description={`${featuredProjects.length} projects that best show the range — hardware and software, design and debugging.`}
       />
 
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2">
         {featuredProjects.map((project, i) => (
           <article key={project.id} className="card group flex flex-col">
             <button
@@ -55,6 +57,12 @@ export default function FeaturedProjects() {
 
               <h3 className="mt-3 text-lg font-semibold text-ink-100">{project.title}</h3>
               <p className="mt-2 text-sm text-ink-300">{project.tagline}</p>
+
+              {project.badges && (
+                <div className="mt-3">
+                  <ProjectBadges badges={project.badges} />
+                </div>
+              )}
 
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {project.tools.map((t) => (

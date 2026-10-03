@@ -51,4 +51,23 @@
   .pill {
     @apply rounded-full border border-ink-600 bg-ink-800/80 px-2.5 py-1 font-mono text-[11px] text-ink-200;
   }
+
+  /* Colored context badges (personal / collaborative / design team) — kept
+     visually distinct from the neutral `.pill` tool tags above. Each kind
+     always maps to the same color so the meaning stays recognizable. */
+  .badge {
+    @apply rounded-full border px-2.5 py-1 font-mono text-[11px] font-medium;
+  }
+
+  .badge-personal {
+    @apply border-accent-500/40 bg-accent-500/15 text-accent-300;
+  }
+
+  .badge-collab {
+    @apply border-teal-500/40 bg-teal-500/15 text-teal-300;
+  }
+
+  .badge-design {
+    @apply border-violet-500/40 bg-violet-500/15 text-violet-300;
+  }
 }

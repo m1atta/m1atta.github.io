@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Project } from '../data/projects'
 import { CloseIcon, GithubIcon, ExternalLinkIcon } from './icons'
+import ProjectBadges from './ProjectBadges'
 
 interface Props {
   project: Project | null
@@ -52,6 +53,11 @@ export default function ProjectModal({ project, onClose }: Props) {
             <h3 id="project-modal-title" className="mt-2 text-2xl font-bold text-ink-100">
               {project.title}
             </h3>
+            {project.badges && (
+              <div className="mt-2">
+                <ProjectBadges badges={project.badges} />
+              </div>
+            )}
           </div>
           <button
             ref={closeBtnRef}

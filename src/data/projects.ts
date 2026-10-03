@@ -27,6 +27,19 @@
 
 export type ProjectCategory = 'hardware' | 'digital-systems' | 'software' | 'robotics' | 'ai'
 
+// Small colored context tags, separate from the neutral `tools` pills.
+// 'personal' = blue, 'collab' = teal, 'design' = violet — each kind always
+// renders in the same color so the meaning stays recognizable across cards.
+// Add more than one if a project is genuinely both (e.g. a collaborative
+// project you built with a design team).
+export type ProjectBadge = 'personal' | 'collab' | 'design'
+
+export const badgeLabel: Record<ProjectBadge, string> = {
+  personal: 'Personal Project',
+  collab: 'Collaborative Project',
+  design: 'Design Team',
+}
+
 export interface Project {
   id: string
   title: string
@@ -42,7 +55,8 @@ export interface Project {
   image?: string // optional path under /public/projects/, e.g. '/projects/alu.png' — doubles as the featured card's main thumbnail
   images?: string[] // optional extra photos shown as a small gallery in the detail view (featured projects only)
   video?: string // optional path under /public/projects/ to a local video file, e.g. '/projects/alu-demo.mp4'
-  featured: boolean // featured projects get the larger card treatment, a thumbnail, and top billing — keep this to your 3 strongest, most-documented projects
+  badges?: ProjectBadge[] // optional colored context tags — see ProjectBadge above
+  featured: boolean // featured projects get the larger card treatment, a thumbnail, and top billing — keep this to your strongest, most-documented projects
 }
 
 export const projects: Project[] = [
@@ -82,6 +96,7 @@ export const projects: Project[] = [
     github: 'https://github.com/m1atta/CanSat_IMU_Magnetometer',
     image: '/projects/cansat-3d-view.png',
     images: ['/projects/cansat-3d-view.png', '/projects/cansat-pcb-layout.png', '/projects/cansat-schematic.png'],
+    badges: ['design'],
     featured: true,
   },
   {
@@ -125,19 +140,23 @@ export const projects: Project[] = [
   },
   {
     id: 'ai-chatbot-prototype',
-    title: 'AI Customer-Support Chatbot Prototype',
-    tagline: 'A Python prototype exploring automated handling of routine support inquiries.',
+    title: 'AI Customer-Support Chatbot',
+    tagline: 'A support chatbot on Amazon Bedrock AgentCore, graded with an automated eval harness.',
     description: [
-      "Built a prototype AI-powered customer-support chatbot in Python, integrating AWS cloud services to explore automated handling of routine inquiries end to end.",
-      "Structured the prototype's request-handling logic and response flow, and documented the design and its known limitations for future iteration.",
+      "Built a customer-support chatbot for a fictional online shop on Amazon Bedrock AgentCore, using Nova Pro with all routing behavior defined in a single system prompt rather than separate classifiers or condition nodes.",
+      'Every customer message routes to one of three behaviors: filing a bug report (collecting description, repro steps, and environment one question at a time, then calling a Lambda-backed AgentCore Gateway tool that writes a ticket to DynamoDB), answering from an embedded FAQ, or handing off to a human support line when the request falls outside both.',
+      "Built an automated evaluation harness that ran 13 test cases against the live chatbot and scored the transcripts with Amazon Bedrock Evaluations (Nova Pro as the LLM judge) on a Correctness metric, to measure behavior objectively instead of eyeballing responses.",
     ],
-    contribution: 'Designed and built the prototype independently as a personal project.',
-    concepts: ['AI application prototyping', 'Cloud integration'],
-    tools: ['Python', 'AWS'],
-    date: '2026',
+    contribution:
+      'Designed and built the chatbot, its system prompt, the bug-report tool chain, and the evaluation harness independently as a personal project.',
+    concepts: ['LLM agent/prompt design', 'Tool-calling architecture', 'Automated LLM evaluation', 'Cloud integration'],
+    tools: ['Python', 'Amazon Bedrock AgentCore', 'AWS Lambda', 'DynamoDB'],
+    date: 'Oct 2026',
     category: 'ai',
-    github: '',
-    featured: false,
+    github: 'https://github.com/m1atta/aws-support-chatbot',
+    image: '/projects/chatbot-eval-results.png',
+    badges: ['personal'],
+    featured: true,
   },
   {
     id: 'roboracer-emergency-braking',
@@ -155,6 +174,7 @@ export const projects: Project[] = [
     github: 'https://github.com/m1atta/roboracer-emergency-braking',
     image: '/projects/roboracer-sim.png',
     video: '/projects/roboracer-demo.mp4',
+    badges: ['design'],
     featured: true,
   },
   {
@@ -162,19 +182,20 @@ export const projects: Project[] = [
     title: 'TMapU — Campus Indoor/Outdoor Mapping App',
     tagline: 'A frontend-only campus navigation app with shortest-path routing between buildings.',
     description: [
-      "Built TMapU, an interior and exterior campus map web app for Toronto Metropolitan University, as a frontend-only project in JavaScript, HTML, and CSS, hosted on Vercel.",
+      "Built TMapU, an interior and exterior campus map web app for Toronto Metropolitan University, as a collaborative, frontend-only project in JavaScript, HTML, and CSS, hosted on Vercel.",
       'Implemented shortest-path routing across a graph of mapped building sections using Dijkstra\'s algorithm, switching between local (within-building) and overall (between-building) routing and stitching the resulting path back together.',
       'Built a location search with autocorrection against known map points, step-by-step turn navigation with dynamic map rotation so the route always points "up" on screen, and SVG-based map rendering with camera transforms, designed to work across desktop and mobile.',
     ],
     contribution:
-      'Designed and built the full application independently, including the routing algorithm, SVG map-loading system, and UI, with current beta coverage across several campus buildings.',
+      'Built TMapU as a collaborative project, including the routing algorithm, SVG map-loading system, and UI, with current beta coverage across several campus buildings.',
     concepts: ['Graph algorithms (Dijkstra)', 'SVG rendering & DOM manipulation', 'Asynchronous JavaScript', 'Responsive/mobile web design'],
     tools: ['JavaScript', 'HTML', 'CSS', 'SVG', 'Vercel'],
-    date: '2026',
+    date: 'June 2026',
     category: 'software',
     github: '',
     demo: 'https://tmapu-beta.vercel.app/',
     image: '/projects/tmapu-screenshot.jpg',
+    badges: ['collab'],
     featured: true,
   },
   {
